@@ -31,8 +31,8 @@
 <body>
     <div class="container">
         <form>
-            <a class="exit-btn">Exit</a>
-            <a class="logout-btn">Logout</a>
+            <a class="back-btn" onclick="window.history.back()">Back</a>
+            <a class="logout-btn" href="Login.html">Logout</a>
             <a class="delete-btn" href="delete account.html">Delete Account</a>
         </form>
         <h1>Credit Account Details</h1>
