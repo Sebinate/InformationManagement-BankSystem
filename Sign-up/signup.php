@@ -1,6 +1,6 @@
 <?php
 $user = "root";
-$password = "12345";
+$password = "1234";
 $database = "BANK_SYSTEM";
 $servername = "localhost:3310";
 
@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mysqli->query($account_sql) === TRUE &&
         $mysqli->query($account_details_sql) === TRUE &&
         $mysqli->query($records_sql) === TRUE) {
-        header("Location: success.html");
+        header("Location: success.php");
         exit();
     } else {
         echo "Error: " . $mysqli->error;
