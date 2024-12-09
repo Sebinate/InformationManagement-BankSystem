@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mysqli->query($account_sql) === TRUE &&
         $mysqli->query($account_details_sql) === TRUE &&
         $mysqli->query($records_sql) === TRUE) {
-        header("Location: success.php");
+        header("Location: success.html");
         exit();
     } else {
         echo "Error: " . $mysqli->error;

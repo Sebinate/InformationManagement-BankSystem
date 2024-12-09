@@ -13,7 +13,7 @@
         die('Connect Error('.$mysqli->connect_errno.')'.$mysqli->connect_error);
     }
 
-    $client_id = $_REQUEST['client_code'];
+    $client_id = $_REQUEST['client_id'];
     if($client_id < 10)
     {
         $client_id = "000$client_id";
@@ -88,7 +88,7 @@
             exit();
         }
 
-        $sql =  "INSERT INTO CLIENT (CL_ID, CL_NAME, CL_ADDRESS, CL_PHONE, CL_EMAIL) VALUES ('$client_id', '$client_name', '$client_address', '$client_phone', '$client_email')";
+        $sql =  "INSERT INTO CLIENT (CL_ID, CL_NAME, CL_ADDRESS, CL_PHONE, CL_EMAIL, CL_PIN) VALUES ('$client_id', '$client_name', '$client_address', '$client_phone', '$client_email', '$client_pin')";
     
         if(mysqli_query($mysqli, $sql))
         {

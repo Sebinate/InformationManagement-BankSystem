@@ -280,6 +280,7 @@
                     <th>Client Address</th>
                     <th>Client Phone</th>
                     <th>Client Email</th>
+                    <th>Client Pin</th>
                 </tr>
                 <?php
                         while($row4 = $result4 -> fetch_assoc())
