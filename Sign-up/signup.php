@@ -70,8 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // SQL Queries
-    $client_sql = "INSERT INTO CLIENT (CL_ID, CL_NAME, CL_ADDRESS, CL_PHONE, CL_EMAIL) 
-                   VALUES ('$cur_code', '$username', 'Default Address', '$contact', '$email')";
+    $client_sql = "INSERT INTO CLIENT (CL_ID, CL_NAME, CL_ADDRESS, CL_PHONE, CL_EMAIL, CL_PIN) 
+                   VALUES ('$cur_code', '$username', 'Default Address', '$contact', '$email', '$cl_pin)";
 
     $account_sql = "INSERT INTO ACCOUNT (ACC_ID, ACC_STATUS, ACC_TYPE) 
                     VALUES ('$acc_code', 'Active', '$acc_type')";
