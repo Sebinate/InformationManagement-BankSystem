@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirm Account Deletion</title>
-    <link rel="stylesheet" href="delete accountcss.css">
+    <link rel="stylesheet" href="delete_account.css">
 </head>
 <body>
     <div class="container">
         <p class="warning">Are you sure you want to delete your account?</p>
-        <form id="deleteForm">
+        <form id="deleteForm" method="POST" action="delete.php">
             <div>
                 <label>
                     <input type="radio" name="confirm" value="yes"> Yes
@@ -20,35 +20,19 @@
                     <input type="radio" name="confirm" value="no"> No
                 </label>
             </div>
-            <button type="button" class="btn" id="confirmDelete" disabled>Confirm Delete</button>
-            <button type="button" class="btn btn-back" id="backButton">Back</button>
+            <button type="submit" class="btn" id="confirmDelete" disabled>Confirm Delete</button>
+            <button type="button" class="btn btn-back" id="backButton" onclick="window.history.back()">Back</button>
         </form>
     </div>
 
     <script>
         const form = document.getElementById('deleteForm');
         const confirmDeleteBtn = document.getElementById('confirmDelete');
-        const backButton = document.getElementById('backButton');
 
         // Enable the Confirm Delete button only when "Yes" is selected
         form.addEventListener('change', () => {
             const selectedValue = form.elements['confirm'].value;
             confirmDeleteBtn.disabled = selectedValue !== 'yes';
-        });
-
-        // Add a confirmation action for Confirm Delete
-        confirmDeleteBtn.addEventListener('click', () => {
-            if (confirm("This action cannot be undone. Are you sure you want to delete your account?")) {
-                alert("Account deleted successfully.");
-                // Add your deletion logic here
-            } else {
-                alert("Account deletion canceled.");
-            }
-        });
-
-        // Add a back navigation action for the Back button
-        backButton.addEventListener('click', () => {
-            history.back();
         });
     </script>
 </body>
