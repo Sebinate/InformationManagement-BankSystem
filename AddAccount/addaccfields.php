@@ -269,7 +269,7 @@
       <label for="confirm-password">Confirm Password</label>
       <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
 
-      <label for="number">Contact No. (+63)</label>
+      <label for="number">Contact No. </label>
       <label><?php echo $row['CL_PHONE']?></label>
 
       <div class="radio-container">
