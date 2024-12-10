@@ -11,7 +11,8 @@
     {
         die('Connect Error('.$mysqli->connect_errno.')'.$mysqli->connect_error);
     }
-    include 'bridge.php';
+    session_start();
+    $uname = $_SESSION['uname'];
 
     $amount = $_REQUEST['payment_amount'];
 
@@ -24,15 +25,15 @@
 
     #getting the client id
     $client_statemet = "SELECT CL_ID FROM RECORDS WHERE ACC_ID = '$uname'";
-    $client_query = $mysqli -> query($client_id);
+    $client_query = $mysqli -> query($client_statemet);
     $client_result = $client_query -> fetch_assoc();
 
     $cl_id = $client_result['CL_ID'];
 
     #Inserting into transaction table
 
-    $transact = "INSERT INTO TRANSACTION (TRANSACT_NUM, TRANSACT_TYPE, TRANSACT_AMMOUNT, EMP_ID, CL_ID, ACC_ID) VALUES ('$uname', 'credit', '$amount', '$emp', '$cl_id', '$uname')";
-    if(mysqli_query($mysqli, query: $sql))
+    $transact = "INSERT INTO TRANSACTION (TRANSACT_NUM, TRANSACT_TYPE, TRANSACT_AMOUNT, EMP_ID, CL_ID, ACC_ID) VALUES ('$uname', 'credit', '$amount', '$emp', '$cl_id', '$uname')";
+    if(mysqli_query($mysqli, query: $transact))
     {
         echo "Data Stored in Database successfully";
     }
@@ -43,7 +44,7 @@
 
     #Update Credit Table
     $updatecred = "UPDATE CREDIT SET CRD_BALANCE = CRD_BALANCE + '$amount' WHERE ACC_ID = '$uname'";
-    if(mysqli_query($mysqli, query: $sql))
+    if(mysqli_query($mysqli, query: $updatecred))
     {
         echo "Data Updated in Database successfully";
     }

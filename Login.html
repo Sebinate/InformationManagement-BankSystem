@@ -108,15 +108,14 @@
 <h2 style="text-align: center;">Bank Login Form</h2>
 <div class="container">
     <div class="upperdiv"> 
-      <form action="Actions/creditpage.php" method="post" class="form">
+      <form action="bridge.php" method="POST" class="form">
         <label class="textlabel" for="uname">
             <b>Account Identification Number</b>
         </label>
-        <input class="inputbox" type="text" placeholder="Enter Account ID" name="uname" required >
+        <input class="inputbox" type="text" placeholder="Enter Account ID" name="name" required >
 
         <label for="psw" class="textlabel"><b>Password</b></label>
-
-        <input class="inputbox" type="password" placeholder="Enter Password" name="psw" required>
+        <input class="inputbox" type="password" placeholder="Enter Password" name="pass" required>
         <input type="submit" style="width: 100%;" class="button1" value = 'Login'>
       </form>
       

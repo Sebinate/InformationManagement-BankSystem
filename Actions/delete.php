@@ -2,47 +2,44 @@
 $user = "root";
 $password = "1234";
 $database = "BANK_SYSTEM";
-$servername = "localhost:3306";
+$servername = "localhost:3310";
 $mysqli = new mysqli($servername, $user, $password, $database);
 if ($mysqli->connect_error) {
     die('Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
 }
-include 'bridge.php';
-$origin = "SELECT * FROM CREDIT WHERE ACC_ID = '$uname'";
-$originquery = $mysqli->query($origin);
-$resultquery = $originquery->fetch_assoc();
+session_start();
+$accid = $_SESSION['uname'];
+$checker = $_REQUEST['confirm'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm']) && $_POST['confirm'] === 'yes') {
-    // Assuming the user ID is stored in the session
-    $userId = $origin;
-
-    // SQL query to delete the account
-    $sql = "DELETE FROM CREDIT WHERE ACC_ID = '$uname'";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $userId);
-
-    if ($stmt->execute()) {
-        // Account successfully deleted
-        echo "<script>
-            alert('Account deleted successfully.');
-            window.location.href = 'transaction.php'; // Redirect to a goodbye page
-        </script>";
-    } else {
-        // Error deleting the account
-        echo "<script>
-            alert('Error deleting account. Please try again later.');
-            window.history.back();
-        </script>";
+if($checker == 'yes')
+{
+    $sql = "DELETE FROM ACCOUNT WHERE ACC_ID = '$accid'";
+    if(mysqli_query($mysqli, $sql))
+    {
+        echo "Data Deleted in Database successfully";
     }
-
-    $stmt->close();
-} else {
-    echo "<script>
-        alert('Account deletion canceled.');
-        window.history.back();
-    </script>";
+    else
+    {
+        echo mysqli_error($mysqli);
+    }
 }
 
-$conn->close();
+else
+{
+    header('Location:https://localhost/Final/Actions/creditpage.php');
+    exit();
+}
 
+$mysqli -> close();
 ?>
+
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <p \> Account Deleted Successfully
+        <form action="../Login.html">
+        <input type="submit" value="Back">
+    </body>
+
+</html>

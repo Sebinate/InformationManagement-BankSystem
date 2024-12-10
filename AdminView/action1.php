@@ -35,7 +35,7 @@
 
     else
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
     
@@ -43,7 +43,7 @@
 
     if(trim($branch_location) === '')
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
@@ -55,7 +55,7 @@
 
         if($rowchecker['checker'] == 1)
         {
-            header('Location:http://localhost/AdminView/error.html');
+            header('Location:http://localhost/Final/AdminView/error.html');
             exit();
         }
         

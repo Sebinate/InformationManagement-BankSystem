@@ -35,7 +35,7 @@
 
     else
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error1.html');
         exit(); 
     }
     
@@ -43,28 +43,22 @@
 
     if(trim($employee_name) === '')
     {
-        header('Location:http://localhost/AdminView/error.html');
-        exit();
-    }
-
-    if(strlen($userinput) >= 50)
-    {
-        header("error.html");
+        header('Location:http://localhost/Final/AdminView/error2.html');
         exit();
     }
 
     $employee_phone = $_REQUEST['employee_phone'];
-    $regex1 = '/+63[0-9]{9}/';
+    $regex1 = '/^\+63\d{10}$/';
     if(preg_match($regex1, $employee_phone) == 0)
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error3.html');
         exit(); 
     }
 
     $employee_pin = $_REQUEST['employee_pin'];
     if (!ctype_digit($employee_pin) || strlen($employee_pin) !== 6) 
     {
-    header('Location:http://localhost/AdminView/error.html');
+    header('Location:http://localhost/Final/AdminView/error4.html');
     exit();
     }
 
@@ -91,7 +85,7 @@
 
     else
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error5.html');
         exit(); 
     }
 
@@ -101,7 +95,7 @@
 
     if($result['col1'] == 'error')
     {
-        header('error.html');
+        header('Location:http://localhost/Final/AdminView/error6.html');
         exit();
     }
 
@@ -113,7 +107,7 @@
 
         if($rowchecker['checker'] == 1)
         {
-            header('Location:http://localhost/AdminView/error.html');
+            header('Location:http://localhost/Final/AdminView/error7.html');
             exit();
         }
         
@@ -173,7 +167,7 @@
         
             if($result['col1'] == 'error')
             {
-                header('error.html');
+                header('Location:http://localhost/Final/AdminView/error8.html');
                 exit();
             }
         

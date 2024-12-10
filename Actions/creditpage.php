@@ -11,11 +11,11 @@
     {
         die('Connect Error('.$mysqli->connect_errno.')'.$mysqli->connect_error);
     }
-    include 'bridge.php';
+    session_start();
+    $uname = $_SESSION['uname'];
 
     $origin = "SELECT * FROM CREDIT WHERE ACC_ID = '$uname'";
     $originquery = $mysqli -> query($origin);
-    $resultquery = $originquery -> fetch_assoc();
 
     $mysqli -> close();
 ?>
@@ -32,18 +32,17 @@
     <div class="container">
         <form>
             <a class="back-btn" onclick="window.history.back()">Back</a>
-            <a class="logout-btn" href="Login.html">Logout</a>
+            <a class="logout-btn" href="../Login.html">Logout</a>
             <a class="delete-btn" href="delete account.html">Delete Account</a>
         </form>
         <h1>Credit Account Details</h1>
         <table>
-            <thead>
                 <tr>
                     <th>Credit Score</th>
                     <th>Credit Limit</th>
                     <th>Credit Balance</th>
                 </tr>
-            </thead>
+
             <tbody>
                 <?php
                     while($resultquery = $originquery -> fetch_assoc())
