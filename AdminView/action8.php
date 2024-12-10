@@ -40,7 +40,7 @@
 
     else
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
@@ -50,26 +50,26 @@
 
     if ($result['col1'] == 'error') 
     {
-    header('Location:http://localhost/AdminView/error.html');
+    header('Location:http://localhost/Final/AdminView/error.html');
     exit();
     }
     
     $savings_balance = $_REQUEST['savings_balance'];
     if (!is_float($savings_balance) || $savings_balance <= 0|| $savings_balance >= 100000000) {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
     $savings_rate = $_REQUEST['savings_rate'];
     if (!is_float($savings_rate) || $savings_rate < 0.00 || $savings_rate > 9.99 || strlen(substr(strrchr($savings_rate, '.'), 1)) > 2) {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
     $savings_pin = $_REQUEST['savings_pin'];
     if (!ctype_digit($savings_pin) || strlen($savings_pin) !== 6) 
     {
-    header('Location:http://localhost/AdminView/error.html');
+    header('Location:http://localhost/Final/AdminView/error.html');
     exit();
     }
 
@@ -81,7 +81,7 @@
 
         if($rowchecker['checker'] == 1)
         {
-            header('Location:http://localhost/AdminView/error.html');
+            header('Location:http://localhost/FinalAdminView/error.html');
             exit();
         }
         

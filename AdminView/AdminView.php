@@ -462,6 +462,9 @@
                     <tr>
                         <td><?php echo $row8['ACC_ID'] ?></td>
                         <td><?php echo $row8['SAV_BAL'] ?></td>
+                        <td><?php echo $row8['SAV_RATE']?></td>
+                        <td><?php echo $row8['SAV_PIN']?></td>
+                    </tr>
                     <?php
                         }
                 ?>

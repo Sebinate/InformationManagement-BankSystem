@@ -36,21 +36,21 @@
 
     else
     {
-        header('Location:http://localhost/banksystem/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
     $client_name = $_REQUEST['client_name'];
     if(strlen($client_name) > 50)
     {
-        header('Location:http://localhost/banksystem/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
     $client_address = $_REQUEST['client_address'];
     if(strlen($client_address) > 50)
     {
-        header('Location:http://localhost/banksystem/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
@@ -58,7 +58,7 @@
     $regex1 = '/^\+63\d{10}$/';
     if(preg_match($regex1, $client_phone) == 0)
     {
-        header('Location:http://localhost/banksystem/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
@@ -66,13 +66,13 @@
     $regex2 = '/^[a-zA-Z0-9.*]+@[a-zA-Z]{3,}+\.[a-zA-Z]{3,}$/';
     if(preg_match($regex2, $client_email) == 0)
     {
-        header('Location:http://localhost/banksystem/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
     $client_pin = $_REQUEST['client_pin'];
     if(strlen($client_pin) != 6){
-        header('Location:http://localhost/banksystem/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
@@ -84,7 +84,7 @@
 
         if($rowchecker['checker'] == 1)
         {
-            header('Location:http://localhost/banksystem/AdminView/error.html');
+            header('Location:http://localhost/Final/AdminView/error.html');
             exit();
         }
 

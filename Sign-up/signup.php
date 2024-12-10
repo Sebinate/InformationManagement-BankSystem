@@ -78,10 +78,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($acc_type == 'savings') {
         $account_details_sql = "INSERT INTO SAVINGS (ACC_ID, SAV_BAL, SAV_RATE, SAV_PIN) 
-                                VALUES ('$acc_code', 0.00, 0.05, '$cl_pin')";
+                                VALUES ('$acc_code', 0.00, 0.05, '$password')";
     } elseif ($acc_type == 'credit') {
         $account_details_sql = "INSERT INTO CREDIT (ACC_ID, CRD_LIMIT, CRD_SCR, CRD_BALANCE, CRD_PIN) 
-                                VALUES ('$acc_code', 10000.00, 700, 0.00, '$cl_pin')";
+                                VALUES ('$acc_code', 10000.00, 700, 0.00, '$password')";
     }
 
     $records_sql = "INSERT INTO RECORDS (CL_ID, ACC_ID) 

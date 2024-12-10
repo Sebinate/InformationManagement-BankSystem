@@ -35,7 +35,7 @@
 
     else
     {
-        header('Location:http://localhost/banksystem/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
     
@@ -45,7 +45,7 @@
 
     if($result['col1'] == 'error')
     {
-        header('error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
@@ -82,7 +82,7 @@
 
     else
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
@@ -104,7 +104,7 @@
 
         if($rowchecker['checker'] == 1)
         {
-            header('Location:http://localhost/AdminView/error.html');
+            header('Location:http://localhost/Final/AdminView/error.html');
             exit();
         }
         

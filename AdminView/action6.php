@@ -40,13 +40,13 @@
 
     else
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
     
     $account_status = $_REQUEST['account_status'];
     if (trim($account_status) === '' || strlen($account_status) > 15) {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
@@ -58,7 +58,7 @@
     
     else
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
@@ -70,7 +70,7 @@
 
         if($rowchecker['checker'] == 1)
         {
-            header('Location:http://localhost/AdminView/error.html');
+            header('Location:http://localhost/Final/AdminView/error.html');
             exit();
         }
         

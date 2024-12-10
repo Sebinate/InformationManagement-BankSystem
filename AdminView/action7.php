@@ -40,7 +40,7 @@
 
     else
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
@@ -50,13 +50,13 @@
 
     if ($result['col1'] == 'error') 
     {
-    header('Location:http://localhost/AdminView/error.html');
+    header('Location:http://localhost/Final/AdminView/error.html');
     exit();
     }
 
     $credit_limit = $_REQUEST['credit_limit'];
     if (!is_float($credit_limit) || $credit_limit <= 0|| $credit_limit >= 100000000) {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
@@ -64,14 +64,14 @@
 
     $credit_balance = $_REQUEST['credit_balance'];
     if (!is_float($credit_balance) || $credit_balance <= 0|| $credit_balance >= 100000000) {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
     $credit_pin = $_REQUEST['credit_pin'];
     if (!ctype_digit($credit_pin) || strlen($credit_pin) !== 6) 
     {
-    header('Location:http://localhost/AdminView/error.html');
+    header('Location:http://localhost/Final/AdminView/error.html');
     exit();
     }
 
@@ -83,7 +83,7 @@
 
         if($rowchecker['checker'] == 1)
         {
-            header('Location:http://localhost/AdminView/error.html');
+            header('Location:http://localhost/Final/AdminView/error.html');
             exit();
         }
         

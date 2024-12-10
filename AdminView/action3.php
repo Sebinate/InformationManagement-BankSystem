@@ -240,6 +240,11 @@
             $result = $query -> fetch_assoc();
         
             if($result['col1'] == 'error')
+            {
+                header('Location:http://localhost/Final/AdminView/error.html');
+                exit();
+            }
+
             $employee_id = $employee_id;
         }
 
@@ -255,6 +260,11 @@
             $result = $query -> fetch_assoc();
         
             if($result['col1'] == 'error')
+            {
+                header('Location:http://localhost/Final/AdminView/error.html');
+                exit();
+            }
+
             $client_id = $client_id;
         }
 
@@ -270,6 +280,11 @@
             $result = $query -> fetch_assoc();
         
             if($result['col1'] == 'error')
+            {
+                header('Location:http://localhost/Final/AdminView/error.html');
+                exit();
+            }
+            
             $account_id = $account_id;
         }
 

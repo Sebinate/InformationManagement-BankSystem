@@ -53,14 +53,19 @@
           }
         }
     
-
+    else
+    {
+      header('Location:https://localhost/Final/AddAccount/error.html');
+      exit();
+    }
+    
     $existance = "SELECT IFNULL((SELECT * FROM CLIENT WHERE CL_ID ='$uname'), 'DNE') AS col1";
     $existancequery = $mysqli -> query(query: $existance);
     $resultexistance = $existancequery -> fetch_assoc();
 
     if($resultexistance['col1'] == 'DNE')
     {
-      header('Location:error.html');
+      header('Location:https://localhost/Final/AddAccount/error.html');
       exit();
     }
     
@@ -70,7 +75,7 @@
 
     if($pass_result['CL_PIN'] != $psw)
     {
-        header('Location:error.html');
+        header('Location:https://localhost/Final/AddAccount/error.html');
         exit();
     }
     
@@ -81,7 +86,7 @@
 
     if($result['COUNTS'] == 0)
     {
-        header('Location:error.html');
+        header('Location:https://localhost/Final/AddAccount/error.html');
         exit();
     }
 
@@ -105,7 +110,7 @@
     
     else
     {
-        header('Location:error.html');
+        header('Location:https://localhost/Final/AddAccount/error.html');
         exit();
     }
 

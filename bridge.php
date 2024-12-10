@@ -27,9 +27,8 @@
 
     if($existanceresult['col1'] == 'DNE')
     {
-        echo $existanceresult["col1"];
-        // header("Location:https://localhost/Final/Actions/error1.html");
-        // exit();
+        header("Location:https://localhost/Final/Actions/error.html");
+        exit();
     }
 
     $typechecker = "SELECT * FROM ACCOUNT WHERE ACC_ID = '$uname'";
@@ -42,11 +41,15 @@
         $passquery = $mysqli -> query($pass);
         $passresult = $passquery -> fetch_assoc();
 
-        if((string)$passresult['SAV_PIN'] == $password)
+        echo $passresult['SAV_PIN'];
+
+        if($passresult['SAV_PIN'] == $password)
         {
-            header('Location:https://localhost/Final/Actions/savings.php');
+            header('Location:https://localhost/Final/Actions/front_end_trans_nocred.php');
             exit();
         }
+
+        
         else
         {
             header('Location:https://localhost/Final/Actions/error2.html');

@@ -31,7 +31,7 @@
 <body>
     <div class="container">
         <form>
-            <a class="back-btn" onclick="window.history.back()">Back</a>
+            <a class="back-btn" href="transaction_history.php">Transaction History</a>
             <a class="logout-btn" href="../Login.html">Logout</a>
             <a class="delete-btn" href="delete account.html">Delete Account</a>
         </form>
