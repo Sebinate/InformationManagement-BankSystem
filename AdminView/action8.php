@@ -85,7 +85,7 @@
             exit();
         }
         
-        $sql =  "INSERT INTO SAVINGS (ACC_ID, SAV_BAL, SAV_RATE, SAV_PIN) VALUES ('$account_id', '$savings_balance, $savings_rate, $savings_pin')";
+        $sql =  "INSERT INTO SAVINGS (ACC_ID, SAV_BAL, SAV_RATE, SAV_PIN) VALUES ('$account_id', $savings_balance, $savings_rate, '$savings_pin')";
         if(mysqli_query($mysqli, $sql))
         {
             echo "Data Stored in Database successfully";

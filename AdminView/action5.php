@@ -92,7 +92,7 @@
 
     if($result['col1'] == 'error')
     {
-        header('error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 

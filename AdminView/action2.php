@@ -35,7 +35,7 @@
 
     else
     {
-        header('Location:http://localhost/Final/AdminView/error1.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
     
@@ -43,7 +43,7 @@
 
     if(trim($employee_name) === '')
     {
-        header('Location:http://localhost/Final/AdminView/error2.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
@@ -51,14 +51,14 @@
     $regex1 = '/^\+63\d{10}$/';
     if(preg_match($regex1, $employee_phone) == 0)
     {
-        header('Location:http://localhost/Final/AdminView/error3.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
     $employee_pin = $_REQUEST['employee_pin'];
     if (!ctype_digit($employee_pin) || strlen($employee_pin) !== 6) 
     {
-    header('Location:http://localhost/Final/AdminView/error4.html');
+    header('Location:http://localhost/Final/AdminView/error.html');
     exit();
     }
 
@@ -85,7 +85,7 @@
 
     else
     {
-        header('Location:http://localhost/Final/AdminView/error5.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
@@ -95,7 +95,7 @@
 
     if($result['col1'] == 'error')
     {
-        header('Location:http://localhost/Final/AdminView/error6.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
@@ -107,7 +107,7 @@
 
         if($rowchecker['checker'] == 1)
         {
-            header('Location:http://localhost/Final/AdminView/error7.html');
+            header('Location:http://localhost/Final/AdminView/error.html');
             exit();
         }
         
@@ -167,7 +167,7 @@
         
             if($result['col1'] == 'error')
             {
-                header('Location:http://localhost/Final/AdminView/error8.html');
+                header('Location:http://localhost/Final/AdminView/error.html');
                 exit();
             }
         

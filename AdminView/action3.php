@@ -45,19 +45,19 @@
 
     else
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
     
     $transaction_type = $_REQUEST['transaction_type'];
     if (trim($transaction_type) === '' || strlen($transaction_type) > 12) {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
     $transaction_amount = $_REQUEST['transaction_amount'];
     if (!is_float($transaction_amount) || $transaction_amount <= 0) {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
@@ -84,7 +84,7 @@
 
     else
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
@@ -94,7 +94,7 @@
 
     if($result['col1'] == 'error')
     {
-        header('error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
@@ -122,7 +122,7 @@
 
     else
     {
-        header('Location:http://localhost/banksystem/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 
@@ -132,7 +132,7 @@
 
     if($result['col1'] == 'error')
     {
-        header('error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit();
     }
 
@@ -169,7 +169,7 @@
 
     else
     {
-        header('Location:http://localhost/AdminView/error.html');
+        header('Location:http://localhost/Final/AdminView/error.html');
         exit(); 
     }
 

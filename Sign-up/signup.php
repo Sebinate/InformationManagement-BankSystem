@@ -35,7 +35,7 @@ if ($result2['col1'] != 'Has') {
 }
 
 // Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['signup'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -115,7 +115,7 @@ $mysqli->close();
 <body>
   <div class="container">
     <h1>Bank Sign-Up Form</h1>
-    <form action="signup.php" method="post">
+    <form action="signup.php" method="POST">
 
       <label2> Client Code: <?php echo $cur_code?> <br>
       <label2> Account Code: <?php echo $acc_code?> <br>
@@ -148,7 +148,7 @@ $mysqli->close();
       </div>
 
       <div class="options">
-        <button type="submit" class="submit-btn">Sign Up</button>
+        <button type="submit" class="submit-btn" name="signup">Sign Up</button>
         <button class="back-btn" type="button" onclick="window.location.href='../Login.html'">Back to Login</button>
       </div>
     </form>

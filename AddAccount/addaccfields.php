@@ -12,8 +12,14 @@
         die('Connect Error('.$mysqli->connect_errno.')'.$mysqli->connect_error);
     }
     #checking existance of client
+    session_start();
+    $_SESSION['uname'] = $_REQUEST['uname'];
+    $_SESSION['psw'] = $_REQUEST['psw'];
+
     $uname = $_REQUEST['uname'];
     $psw = $_REQUEST['psw'];
+
+    $action = $_POST['addacc'];
 
     $acc_code = '000001';
     $sql2 = "SELECT IFNULL((SELECT ACC_ID FROM ACCOUNT ORDER BY ACC_ID DESC LIMIT 1), 'Has') AS col1";
@@ -29,28 +35,35 @@
 
         if ($acc_code < 10) 
           {
-              $acc_code = "0000$acc_code";
+              $acc_code = "00000$acc_code";
           } 
           
           elseif ($acc_code >= 10 && $acc_code < 100) 
           {
-              $acc_code = "000$acc_code";
+              $acc_code = "0000$acc_code";
           } 
           
           elseif ($acc_code >= 100 && $acc_code < 1000) 
           {
-              $acc_code = "00$acc_code";
+              $acc_code = "000$acc_code";
           } 
           
           elseif ($acc_code >= 1000 && $acc_code < 10000) 
           {
-              $acc_code = "0$acc_code";
+              $acc_code = "00$acc_code";
           } 
           
           elseif ($acc_code >= 10000 && $acc_code < 100000) 
           {
+              $acc_code = "0$acc_code";
+          }
+
+          else
+          {
               $acc_code = (string)$acc_code;
           }
+
+          $_SESSION['acc_code'] = $acc_code;
         }
     
     else
@@ -58,9 +71,15 @@
       header('Location:https://localhost/Final/AddAccount/error.html');
       exit();
     }
+
+    if($action == 'Update Client Details')
+    {
+      header("Location:https://localhost/Final/AddAccount/Update.php");
+      exit();
+    }
     
-    $existance = "SELECT IFNULL((SELECT * FROM CLIENT WHERE CL_ID ='$uname'), 'DNE') AS col1";
-    $existancequery = $mysqli -> query(query: $existance);
+    $existance = "SELECT IFNULL((SELECT CL_ID FROM CLIENT WHERE CL_ID ='$uname'), 'DNE') AS col1";
+    $existancequery = $mysqli -> query($existance);
     $resultexistance = $existancequery -> fetch_assoc();
 
     if($resultexistance['col1'] == 'DNE')
@@ -71,7 +90,7 @@
     
     $passchecker = "SELECT * FROM CLIENT WHERE CL_ID = '$uname'";
     $passquery = $mysqli -> query($passchecker);
-    $pass_result = $pass_query -> fetch_assoc();
+    $pass_result = $passquery -> fetch_assoc();
 
     if($pass_result['CL_PIN'] != $psw)
     {
@@ -80,7 +99,7 @@
     }
     
 
-    $sql = "SELECT COUNT(*) AS COUNTS, ACC_ID, CL_ID FROM RECORDS WHERE CL_ID = '$uname'";
+    $sql = "SELECT COUNT(*) AS COUNTS FROM RECORDS WHERE CL_ID = '$uname'";
     $query = $mysqli -> query($sql);
     $result = $query -> fetch_assoc();
 
@@ -92,20 +111,21 @@
 
     elseif($result['COUNTS'] == 1)
     {   
-        $acidtemp = $result['ACC_ID'];
-        $sql1 = "SELECT ACC_TYPE FROM ACCOUNT WHERE ACC_ID = '$acidtemp'";
+        $sql1 = "SELECT ACC_TYPE FROM ACCOUNT WHERE ACC_ID = (SELECT ACC_ID FROM RECORDS WHERE CL_ID = '$uname')";
         $query1 = $mysqli -> query($sql1);
         $result1 = $query1 -> fetch_assoc();
 
-        if($resul1['ACC_TYPE'] == 'savings')
+        if($result1['ACC_TYPE'] == 'savings')
         {   
-            $curr_acctype = 'saving';
+            $curr_acctype = 'credit';
         }
 
         else
         {
-            $curr_acctype = 'credit';
+            $curr_acctype = 'savings';
         }
+
+        $_SESSION['acctype'] = $curr_acctype;
     }
     
     else
@@ -226,21 +246,23 @@
 
     </style>
 </head>
-
 <body>
   <div class="container">
     <h1>Bank Add Account Form</h1>
     <form action="addacc.php" method="post">
-
+    <div style="padding-bottom:10px;">
       <label2> Client Code: <?php echo $uname?> <br>
       <label2> Account Code: <?php echo $acc_code?> <br>
+    </div>
 
-      <label for="username">Username </label>
-      <label><?php echo $row['CL_NAME']; ?></label>
-      
-      <label for="email">Email Address</label>
-      <label><?php echo $row['CL_EMAIL']?></label>
-
+    <div style="padding-bottom:10px;">
+      <label for="username">Username: </label>
+      <label><?php echo $row['CL_NAME']; ?></label><br>
+    </div>
+    <div style="padding-bottom:10px;">
+      <label for="email">Email Address: </label>
+      <label><?php echo $row['CL_EMAIL']?></label><br>
+    </div>
       <label for="password">Password</label>
       <input type="password" id="password" name="password" placeholder="Create Password" required>
 
@@ -251,27 +273,12 @@
       <label><?php echo $row['CL_PHONE']?></label>
 
       <div class="radio-container">
-        <?php
-          if($curr_acctype == 'credit')
-          {
-        ?>
-        <label><input type="radio" name="accountType" value="savings" required> Savings</label>
-        <?php
-          }
-        ?>
-        <?php
-          if($curr_acctype == 'savings')
-          {
-        ?>
-        <label><input type="radio" name="accountType" value="credit"> Credit</label>
-        <?php
-          }
-        ?>
+        <label> You are opening: <?php echo $curr_acctype ?> Account</label>
       </div>
 
       <div class="options">
-        <button type="submit" class="submit-btn">Sign Up</button>
-        <button class="back-btn" type="button" onclick="window.location.href='login.php'">Back to Login</button>
+        <button type="submit" class="submit-btn">Add Account</button>
+        <button class="back-btn" type="button" onclick="window.location.href='addacc.html'">Back to Login</button>
       </div>
     </form>
   </div>
